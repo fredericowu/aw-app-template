@@ -1,4 +1,4 @@
-name: Code Review
+name: Devteam Code Review
 
 # Thin caller. The two-round PR review -> merge loop itself now lives in
 # fredericowu/aw-shared-workflows — read that file's header for the round
@@ -218,7 +218,7 @@ concurrency:
 
 jobs:
   review:
-    uses: fredericowu/aw-shared-workflows/.github/workflows/code-review-reusable.yml@v1.11.0
+    uses: fredericowu/aw-shared-workflows/.github/workflows/code-review-reusable.yml@v1.12.0
     with:
       # test.yml's job id on this repo. Verified against real `gh pr checks`
       # output (PRs #13-15), not read off the YAML — `ui-lint` is a second job
