@@ -27,7 +27,7 @@ new repo seeded from this one's current `master` — no git history, no fork
 relationship, just a fresh copy. From the CLI:
 
 ```bash
-gh repo create tekflox/aw-app-<yourapp> --template tekflox/aw-app-template --public
+gh repo create tekflox/aw-app-<yourapp> --template fredericowu/aw-app-template --public
 git clone https://github.com/tekflox/aw-app-<yourapp>
 ```
 

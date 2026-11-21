@@ -9,7 +9,7 @@ jobs:
   security-scan:
     uses: fredericowu/aw-shared-workflows/.github/workflows/security-scan-reusable.yml@master
     with:
-      runs_on: ${{ startsWith(github.repository, 'tekflox/') && '["self-hosted","aw-baremetal"]' || '"ubuntu-latest"' }}
+      runs_on: ${{ (startsWith(github.repository, 'tekflox/') || vars.AW_RUNNER == 'aw-baremetal') && '["self-hosted","aw-baremetal"]' || '"ubuntu-latest"' }}
     permissions:
       actions: read
       contents: read

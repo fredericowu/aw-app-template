@@ -34,10 +34,13 @@ on:
 #      GitHub-hosted runners are disposable VMs with a read-only token, which
 #      is what makes an open `pull_request:` trigger safe — and they are free
 #      and unmetered on a public repo.
+# A repo outside the org opts in to the bare-metal runners with the repo
+# variable AW_RUNNER=aw-baremetal, set by aw-automation/scripts/register-repo-runner.sh
+# together with a per-repo runner; without it the job stays GitHub-hosted.
 # fromJSON needs valid JSON inside, so the single label carries its own quotes.
 jobs:
   coverage:
-    runs-on: ${{ fromJSON(startsWith(github.repository, 'tekflox/') && '["self-hosted","aw-baremetal"]' || '"ubuntu-latest"') }}
+    runs-on: ${{ fromJSON((startsWith(github.repository, 'tekflox/') || vars.AW_RUNNER == 'aw-baremetal') && '["self-hosted","aw-baremetal"]' || '"ubuntu-latest"') }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
@@ -91,7 +94,7 @@ jobs:
   # until `pre-commit install`). node-version matches ui/package.json's
   # `engines.node: ">=24"`.
   ui-lint:
-    runs-on: ${{ fromJSON(startsWith(github.repository, 'tekflox/') && '["self-hosted","aw-baremetal"]' || '"ubuntu-latest"') }}
+    runs-on: ${{ fromJSON((startsWith(github.repository, 'tekflox/') || vars.AW_RUNNER == 'aw-baremetal') && '["self-hosted","aw-baremetal"]' || '"ubuntu-latest"') }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
