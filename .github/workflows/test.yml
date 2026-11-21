@@ -35,7 +35,7 @@ on:
 #      is what makes an open `pull_request:` trigger safe — and they are free
 #      and unmetered on a public repo.
 # A repo outside the org opts in to the bare-metal runners with the repo
-# variable AW_RUNNER=aw-baremetal, set by aw-automation/scripts/register-repo-runner.sh
+# variable AW_RUNNER=aw-baremetal, set when the repo registers its own runner
 # together with a per-repo runner; without it the job stays GitHub-hosted.
 # fromJSON needs valid JSON inside, so the single label carries its own quotes.
 jobs:
