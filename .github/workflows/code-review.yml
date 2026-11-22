@@ -242,6 +242,9 @@ jobs:
       # with a node on the software-engineering Agents Flow. See
       # fredericowu/aw-shared-workflows's PROVENANCE header note for why.
       agent_slug: code-reviewer-pipeline
+      # PR lifecycle v2 (card 41f5bf3b): review 1 blocks on MEDIUM+, later pushes
+      # merge on green CI, the merge wakes the coder via the AP-MT webhook.
+      lifecycle: v2
     # Declared here as well as in the called workflow: for a reusable workflow
     # the effective GITHUB_TOKEN permissions are the INTERSECTION of the two,
     # so a scope omitted here cannot be granted by the shared file — AND a
